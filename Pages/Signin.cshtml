@@ -1,4 +1,29 @@
 ﻿@page
+
+@*
+    // Based on code by Khalid Abuhakmeh:
+    // https://khalidabuhakmeh.com/github-openid-auth-aspnet-core-apps
+*@
+
 @model HelloGithubOAuth.Pages.SigninModel
 @{
+    ViewData["Title"] = "Signin Page";
 }
+
+<div class="jumbotron">
+    <h1>Authentication</h1>
+    <p class="lead text-left">Sign in using one of these external providers:</p>
+
+    @foreach (var scheme in Model.Schemes!.OrderBy(p => p.DisplayName));
+    @foreach (var scheme in Model.Schemes!)
+    {
+        <form asp-page="SignIn" method="post">
+            <input type="hidden" name="Provider" value="@scheme.Name" />
+            <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+
+            <button class="btn btn-lg btn-success m-1" type="submit">
+                Sign in using @scheme.DisplayName
+            </button>
+        </form>
+    }
+</div>
