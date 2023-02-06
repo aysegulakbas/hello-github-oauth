@@ -1,4 +1,4 @@
-# Hello Github OAuth
+# Hello GitHub OAuth
 
 This is a 'Hello World' app to demonstrate a minimal working connection with GitHub OAuth for an ASP.NET Core 7.0 application (specifically v7.0.102).
 
